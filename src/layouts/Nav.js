@@ -3,7 +3,7 @@ import { Input, Menu, Container } from "semantic-ui-react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 
-const Nav = () => {
+const Nav = ({ user }) => {
   const { pathname } = useRouter();
   const [activeItem, setActiveItem] = useState();
   return (
@@ -20,7 +20,7 @@ const Nav = () => {
           </Menu.Item>
           <Link href="/login">
             <Menu.Item name="logout" active={activeItem === "logout"}>
-              Log In
+              {user ? "Log Out" : "Log In"}
             </Menu.Item>
           </Link>
         </Menu.Menu>

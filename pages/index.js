@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { protectedPage } from "server/utils/protectedPage";
 import styles from "../styles/Home.module.css";
 
 const Home = (props) => {
@@ -63,12 +64,12 @@ const Home = (props) => {
   );
 };
 
-export async function getStaticProps() {
+export const getServerSideProps = protectedPage((user) => {
   return {
     props: {
-      arr: [],
+      user,
     },
   };
-}
+});
 
 export default Home;

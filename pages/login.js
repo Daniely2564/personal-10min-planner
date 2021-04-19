@@ -3,9 +3,10 @@ import { Form, Segment, Button } from "semantic-ui-react";
 import styles from "@styles/Login.module.css";
 import Link from "next/link";
 import { useUser } from "../hooks/useUser";
+import { populateUser } from "../server/utils/populateUser";
 
-const Login = ({ data }) => {
-  const user = useUser();
+const Login = ({ user }) => {
+  console.log(user);
   return (
     <div className={styles["log-in-container"]}>
       <Segment className={styles["log-in-box"]}>
@@ -28,6 +29,21 @@ const Login = ({ data }) => {
       </Segment>
     </div>
   );
+};
+
+export const getServerSideProps = async (ctx) => {
+  const { user } = await populateUser(ctx);
+  if (user) {
+    return {
+      props: { user },
+      redirect: {
+        destination: "/",
+      },
+    };
+  }
+  return {
+    props: {},
+  };
 };
 
 export default Login;

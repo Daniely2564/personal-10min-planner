@@ -1,10 +1,10 @@
 import React from "react";
 import Nav from "./Nav";
 
-const Header = () => {
+const Header = ({ user }) => {
   return (
     <header>
-      <Nav />
+      <Nav user={user} />
     </header>
   );
 };

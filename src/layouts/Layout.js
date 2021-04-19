@@ -3,10 +3,10 @@ import Header from "@layouts/Header";
 import Footer from "@layouts/Footer";
 import { Container } from "semantic-ui-react";
 
-const Layout = ({ children }) => {
+const Layout = ({ children, user }) => {
   return (
     <div>
-      <Header />
+      <Header user={user} />
       <Container className="main-container">{children}</Container>
       <Footer />
     </div>

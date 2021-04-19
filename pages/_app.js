@@ -4,7 +4,7 @@ import Layout from "../src/layouts/Layout";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <Layout>
+    <Layout user={pageProps.user}>
       <Component {...pageProps} />
     </Layout>
   );
