@@ -2,8 +2,10 @@ import React from "react";
 import { Form, Segment, Button } from "semantic-ui-react";
 import styles from "@styles/Login.module.css";
 import Link from "next/link";
+import { useUser } from "../hooks/useUser";
 
-const Login = () => {
+const Login = ({ data }) => {
+  const user = useUser();
   return (
     <div className={styles["log-in-container"]}>
       <Segment className={styles["log-in-box"]}>

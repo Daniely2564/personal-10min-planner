@@ -1,5 +1,11 @@
 import { useState } from "react";
 
+export const useUser = async () => {
+  const res = await fetch("/api/user");
+  const data = await res.json();
+  console.log(data);
+};
+
 export const useSignIn = () => {
   const initialForm = {
     firstName: "",
