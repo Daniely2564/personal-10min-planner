@@ -2,10 +2,10 @@ import React from "react";
 import { Form, Segment, Button, Message } from "semantic-ui-react";
 import styles from "@styles/Login.module.css";
 import Link from "next/link";
-import { useSignIn } from "hooks/useUser";
+import { useSignUp } from "hooks/useUser";
 
-const Signin = () => {
-  const [form, onInputChange, onFormSubmit, payload] = useSignIn();
+const Signup = () => {
+  const [form, onInputChange, onFormSubmit, payload] = useSignUp();
   const { error, loading } = payload;
   return (
     <div className={styles["log-in-container"]}>
@@ -72,4 +72,4 @@ const Signin = () => {
   );
 };
 
-export default Signin;
+export default Signup;

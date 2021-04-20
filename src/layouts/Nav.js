@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { Input, Menu, Container } from "semantic-ui-react";
 import { useRouter } from "next/router";
+import { useLogout } from "../../hooks/useUser";
 import Link from "next/link";
 
 const Nav = ({ user }) => {
-  const { pathname } = useRouter();
+  const { pathname, push } = useRouter();
+  const logout = useLogout(() => push("/login"));
   const [activeItem, setActiveItem] = useState();
   return (
     <Menu secondary color="blue" inverted>
@@ -18,11 +20,13 @@ const Nav = ({ user }) => {
           <Menu.Item>
             <Input icon="search" placeholder="Search..." />
           </Menu.Item>
-          <Link href="/login">
-            <Menu.Item name="logout" active={activeItem === "logout"}>
-              {user ? "Log Out" : "Log In"}
-            </Menu.Item>
-          </Link>
+          {user ? (
+            <Menu.Item onClick={logout}>Log Out</Menu.Item>
+          ) : (
+            <Link href="/login">
+              <Menu.Item active={activeItem === "logout"}>Log In</Menu.Item>
+            </Link>
+          )}
         </Menu.Menu>
       </Container>
     </Menu>
